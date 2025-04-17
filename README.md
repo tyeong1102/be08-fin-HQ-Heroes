@@ -160,26 +160,27 @@ It also aims to improve employee satisfaction by offering a team calendar for sc
 
 <br>
 
-## 📑 시스템 아키텍처
+## 📑 System Architecture 
 ![시스템 아키텍처](https://github.com/user-attachments/assets/987dc595-7efb-4ef7-9006-bd64d40930aa)
 <br>
 
 <br>
 
-## 📑 통합 테스트
+## 📑 Integration Testing 
 [통합 테스트](https://www.notion.so/playdatacademy/69a4e1b2079546d1bf5a0f56214882fc)
 
 <br>
 
-## 📑 CI/CD 계획서
+## 📑 CI/CD Plan 
 [CI/CD 계획서](https://www.notion.so/playdatacademy/CI-CD-e63235a2c456455f9852ae393fd53e67)
 
 <br>
 
-## 🚀 CI/CD 파이프라인
+## 🚀 CI/CD Pipeline Overview
 
-이 **CI/CD 파이프라인**은 AWS 환경에서 애플리케이션 배포를 자동화하여 안정적이고 확장 가능한 환경을 구축하는 데 중점을 두고 있습니다. **Jenkins**를 통한 지속적 통합(CI)과 **ArgoCD**를 통한 지속적 배포(CD)를 결합하여, 코드에서 배포까지의 과정을 효율적이고 빠르게 관리합니다.
-
+This **CI/CD pipeline** automates application deployment in AWS infrastructure.  
+It combines **Jenkins** (for Continuous Integration) and **ArgoCD** (for Continuous Deployment)  
+to create a fast, scalable, and reliable deployment flow.
 
 ### CI/CD 환경 구성 개요 🌐
 
