@@ -212,18 +212,19 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>2. Checkout Stage (코드 체크아웃)</summary>
-	
- 	GitHub에서 main 브랜치를 체크아웃합니다. GitHub 인증 정보(github-https-credentials)를 사용합니다.
+	<summary>2. Checkout Stage</summary>
+
+	Checks out the `main` branch from GitHub using the specified credentials (`github-https-credentials`).
 	
  	git branch: 'main', url: 'https://github.com/beyond-sw-camp/be08-fin-HQ-Heroes.git', credentialsId: 'github-https-credentials'
 </details>
 
 <details>
-	<summary>3. Determine Changes Stage (변경 사항 확인)</summary>
-	
-	1. git diff를 사용하여 마지막 커밋과 현재 커밋 간의 파일 변경 사항을 확인합니다.
-	2. Frontend/와 Backend/Heroes/ 디렉토리 내 파일이 변경된 경우, 해당 영역에 대한 빌드를 설정합니다.
+	<summary>3. Determine Changes Stage</summary>
+
+	1. Uses `git diff` to identify file changes between the latest commit and the current one.  
+	2. If files within the `Frontend/` or `Backend/Heroes/` directories have changed,  
+	   the corresponding build steps for each area are triggered.
 
  	def changedFiles = sh(script: 'git diff --name-only HEAD~1', returnStdout: true).trim().split("\n")
 	env.BUILD_FRONTEND = changedFiles.any { it.startsWith("Frontend/") } ? "true" : "false"
@@ -231,10 +232,10 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>4. Build Backend Docker Image Stage (백엔드 Docker 이미지 빌드)</summary>
-	
-	1. Backend/Heroes 디렉토리로 이동하여 Gradle을 사용해 백엔드 프로젝트를 빌드합니다 (./gradlew clean bootJar).
-	2. Dockerfile을 사용하여 Docker 이미지를 빌드합니다.
+	<summary>4. Build Backend Docker Image Stage</summary>
+
+	1. Navigates to the `Backend/Heroes` directory and builds the backend project using Gradle (`./gradlew clean bootJar`).  
+	2. Builds a Docker image using the provided `Dockerfile`.
 
  	dir('Backend/Heroes') {
 	    sh 'chmod +x ./gradlew'
@@ -244,10 +245,10 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>5. Push Backend to ECR Stage (백엔드 이미지 ECR 푸시)</summary>
-	
-	1. AWS CLI를 사용하여 ECR에 로그인합니다.
-	2. 빌드한 백엔드 이미지를 ECR로 푸시합니다.
+	<summary>5. Push Backend to ECR Stage</summary>
+
+	1. Logs in to AWS ECR using the AWS CLI.  
+	2. Pushes the built backend Docker image to the ECR repository.
 
  	sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}"
 	sh "docker tag ${BACKEND_REPOSITORY}:${BACKEND_IMAGE_TAG} ${ECR_REGISTRY}/${BACKEND_REPOSITORY}:${BACKEND_IMAGE_TAG}"
@@ -255,9 +256,9 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>6. Build Frontend Docker Image Stage (프론트엔드 Docker 이미지 빌드)</summary>
-	
-	Frontend 디렉토리로 이동하여 프론트엔드 Docker 이미지를 빌드합니다.
+	<summary>6. Build Frontend Docker Image Stage</summary>
+
+	Navigates to the `Frontend` directory and builds the frontend Docker image.
 
  	dir('Frontend') {
 	    sh "docker build -t ${FRONTEND_REPOSITORY}:${FRONTEND_IMAGE_TAG} -f Dockerfile ."
@@ -265,19 +266,19 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>7. Push Frontend to ECR Stage (프론트엔드 이미지 ECR 푸시)</summary>
-	
-	빌드한 프론트엔드 이미지를 ECR에 푸시합니다.
+	<summary>7. Push Frontend to ECR Stage</summary>
+
+	Pushes the built frontend Docker image to AWS ECR.
 
  	sh "docker tag ${FRONTEND_REPOSITORY}:${FRONTEND_IMAGE_TAG} ${ECR_REGISTRY}/${FRONTEND_REPOSITORY}:${FRONTEND_IMAGE_TAG}"
 	sh "docker push ${ECR_REGISTRY}/${FRONTEND_REPOSITORY}:${FRONTEND_IMAGE_TAG}"
 </details>
 
 <details>
-	<summary>8. Update ArgoCD Stage (ArgoCD 업데이트)</summary>
-	
-	1. Kubernetes 배포 파일(heroes-frontend-deploy.yaml, heroes-deploy.yaml)에서 이미지 태그를 업데이트합니다.
-	2. 변경된 파일들을 Git에 커밋하고 푸시하여 ArgoCD가 자동으로 배포하도록 합니다.
+	<summary>8. Update ArgoCD Stage</summary>
+
+	1. Updates the image tags in the Kubernetes deployment files (`heroes-frontend-deploy.yaml`, `heroes-deploy.yaml`).  
+	2. Commits and pushes the updated files to GitHub so that ArgoCD can automatically detect the changes and deploy the updated containers.
 
  	def frontendFilePath = 'k8s/heroes/heroes-frontend-deploy.yaml'
 	def backendFilePath = 'k8s/heroes/heroes-deploy.yaml'
@@ -297,10 +298,10 @@ to create a fast, scalable, and reliable deployment flow.
 </details>
 
 <details>
-	<summary>9. Post Actions (성공/실패 알림)</summary>
-	
-	성공: Discord 웹훅을 통해 빌드 성공 메시지를 보냅니다.
-	실패: 빌드 실패 시에도 Discord 웹훅을 통해 실패 메시지를 보냅니다.
+	<summary>9. Post Actions</summary>
+
+	- **On success**: Sends a success message via Discord webhook, including build details and image info.  
+	- **On failure**: Sends a failure notification via Discord webhook as well.
 
  	discordSend description: "ArgoCD 배포 파이프라인이 성공적으로 완료되었습니다.\n\n" +
              "**Build ID**: ${BUILD_ID}\n" +
@@ -314,7 +315,7 @@ to create a fast, scalable, and reliable deployment flow.
              webhookURL: "YOUR_DISCORD_WEBHOOK_URL"
 </details>
 
-### Jenkinsfile 전체 코드
+### 📄 Full Jenkinsfile Code
 <details>
 	<summary>보기</summary>
 
@@ -477,7 +478,7 @@ to create a fast, scalable, and reliable deployment flow.
 
 <br>
 
-## ▶️ CICD 테스트(Jenkinsfile)
+## ▶️ CICD Test(Jenkinsfile)
 [CI/CD 테스트 영상](https://www.youtube.com/watch?v=VdlhfOg5f_k)
 
 <br>
