@@ -317,7 +317,7 @@ to create a fast, scalable, and reliable deployment flow.
 
 ### 📄 Full Jenkinsfile Code
 <details>
-	<summary>보기</summary>
+	<summary>Code</summary>
 
 	pipeline {
 	    agent any
