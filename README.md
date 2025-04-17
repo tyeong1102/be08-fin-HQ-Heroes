@@ -78,7 +78,7 @@
   <img src="https://img.shields.io/badge/SourceTree-%230052CC?style=for-the-badge&logo=sourcetree&logoColor=white">
 </div>
 
-### 협업 툴
+### Tools
 <div>
   <img src="https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=notion&logoColor=white">
   <img src="https://img.shields.io/badge/Google%20Docs-%234285F4?style=for-the-badge&logo=googledocs&logoColor=white">
