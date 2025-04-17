@@ -3,11 +3,11 @@
 </div>
 
 <div align="center">
-  <h3>한화시스템 BEYOND SW 캠프 최종 프로젝트 - 1조 HQ</h3>
-  <h3>👨‍💻 인사 관리 시스템 - HeRoes 👨‍💻</h3>
+  <h3>Hanwha Systems BEYOND SW Camp Final Project - Team HQ</h3>
+  <h3>👨‍💻 HR Management System - HeRoes 👨‍💻</h3>
 </div>
 
-## 🧑‍💻 팀 구성
+## 🧑‍💻 Team Members
 <br>
 <div align="center">
 <br>
@@ -25,7 +25,7 @@
 
 <br>
 
-## 🛠️ 기술 스택 🛠️
+## 🛠️ Tech Stack
 
 ### FrontEnd
 <div>
@@ -90,16 +90,19 @@
 
 <br>
 
-## 🔆 프로젝트 개요 및 기대효과
-HeRoes 프로젝트는 사원들의 업무를 효율적으로 관리하기 위해 근태 관리 데이터를 기반으로 급여를 **자동화**하는 HR관리 시스템입니다. 급여를 계산하는 과정에서 발생하는 오류를 줄이고, 수동 처리에 드는 시간을 절약하는 것을 목표로 하고 있습니다. 또한, 사원들의 일정을 한 눈에 확인 할 수 있는 팀 캘린더 시스템, 회사에서 진행하는 교육 등을 제공하여 사원들의 만족도를 향상시키는 것을 목표로 합니다.
+## 🔆 Project Overview & Expected Effects
 
-- 아날로그 방식 → 자동화를 통한 업무 효율성 향상
-- 중요 정보 전달 누락 → 의사소통 개선
-- 업무에 필요한 지식·기술 부족 → 직원 역량 강화
+The **HeRoes** project is an HR management system designed to automate payroll based on employee attendance data.  
+Its goal is to reduce human errors during payroll calculations and save time on manual processing.  
+It also aims to improve employee satisfaction by offering a team calendar for schedule visibility and a platform for company training and events.
+
+- From analog to automated: Improves overall efficiency
+- Eliminates missed communications for important updates
+- Provides educational resources to improve employee competency
 
 <br>
 
-## 📑 프로젝트 기획서
+## 📑 Project Proposal
 
 
 [프로젝트 기획서](https://playdatacademy.notion.site/bdf4d060b31a4555b9fb00ef0f98bbfc)
@@ -107,7 +110,7 @@ HeRoes 프로젝트는 사원들의 업무를 효율적으로 관리하기 위�
 
 <br>
 
-## 📑 요구사항 명세서
+## 📑 Requirements Specification 
 
 
 [요구사항 명세서](https://docs.google.com/spreadsheets/d/1I81YiEOdhIkn-6CAHCcOTzliay9jMC2x0q_v7nGALVs/edit?usp=sharing)
@@ -115,7 +118,7 @@ HeRoes 프로젝트는 사원들의 업무를 효율적으로 관리하기 위�
 
 <br>
 
-## 📅 WBS
+## 📅 WBS (Work Breakdown Structure) 
 
 [WBS](https://docs.google.com/spreadsheets/d/11uxzOc_F1XGaa-jF9gtnNzzb2FqxmP_m8B-FbtFqEb8/edit?gid=0#gid=0)
 
@@ -127,31 +130,31 @@ HeRoes 프로젝트는 사원들의 업무를 효율적으로 관리하기 위�
 
 <br>
 
-## 📺 화면 설계서
+## 📺 UI Wireframes 
 
 [화면 설계서](https://www.figma.com/board/gluKEJsk3zgrZrrMgvBh7U/HeRoes-화면-설계서?node-id=0-1&t=r8PfiIedMNaRsowv-1)
 
 <br>
 
-## 📄 API 명세서
+## 📄 API Documentation
 
 [API 명세서](https://playdatacademy.notion.site/API-5b7e16a67c6e407ea0e5035153c6bc88?pvs=4)
 
 <br>
 
-## 📜 테스트 시나리오
+## 📜 Test Scenarios
 
 [테스트 시나리오](https://docs.google.com/spreadsheets/d/10T3jsm3aS-NS-D-3E92f18xkcve6frEbmGwcAcYbNQg/edit?gid=0#gid=0)
 
 <br>
 
-## 📈 단위 테스트 결과서
+## 📈 Unit Test Results
 
 [단위 테스트 결과서](https://docs.google.com/spreadsheets/d/16IVL1Zvi8nouXRf0L8f5Z_AEXyXcuqNTStf0ODIuzrc/edit?gid=0#gid=0)
 
 <br>
 
-## UI/UX 단위 테스트 결과서
+## 🎨 UI/UX Test Report
 
 [UI/UX 단위 테스트 결과서](https://docs.google.com/spreadsheets/d/1p2S1Dx_Czk0cFEXHtt2w0ZFetm8syJea9jIj2o6hSeE/edit?gid=0#gid=0)
 
