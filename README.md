@@ -182,31 +182,33 @@ This **CI/CD pipeline** automates application deployment in AWS infrastructure.
 It combines **Jenkins** (for Continuous Integration) and **ArgoCD** (for Continuous Deployment)  
 to create a fast, scalable, and reliable deployment flow.
 
-### CI/CD 환경 구성 개요 🌐
+### 🌐 CI/CD Environment Overview
 
-- **AWS EKS**: 웹 애플리케이션 및 ArgoCD 서버 호스팅
-- **AWS EC2**: Jenkins 서버 호스팅
-- **AWS ECR**: Docker 이미지를 저장하고 관리하는 레지스트리
+- **AWS EKS**: Hosts the web application and ArgoCD server
+- **AWS EC2**: Hosts the Jenkins server
+- **AWS ECR**: Stores and manages Docker images
 
-### CI/CD 파이프라인 흐름 📈
+### 📈 CI/CD Pipeline Flow
 
-1. **개발자가 GitHub의 main 브랜치에 코드 푸시**: 웹훅을 통해 CI 파이프라인 트리거
-2. **Jenkins 서버에서 코드 변경 사항 감지**: GitHub에서 변경 사항을 감지하여 애플리케이션 빌드
-3. **AWS ECR에 Docker 이미지 푸시**: 빌드된 Docker 이미지를 AWS ECR에 푸시
-4. **ArgoCD에 배포 파일 업데이트**: 변경된 이미지를 반영하여 배포 파일을 수정하고 GitHub에 푸시
-5. **ArgoCD 자동 배포**: GitHub의 변경 사항을 감지하여 자동 배포 수행 또는 수동 배포 옵션
-### Jenkins CI 단계 ⚙️
+1. **Developer pushes code to the `main` branch on GitHub**: This triggers the CI pipeline via a webhook
+2. **Jenkins detects code changes**: Pulls the updated code from GitHub and builds the application
+3. **Pushes Docker image to AWS ECR**: The built image is pushed to the container registry
+4. **Updates deployment files for ArgoCD**: Updates image tags and pushes the changes to GitHub
+5. **ArgoCD auto-deploys**: Detects changes in the GitHub repository and performs automated or manual deployment
+
+### ⚙️ Jenkins CI Stages
+
 <details>
-	<summary>1. 환경 변수 설정 (Environment)</summary>
+	<summary>1. Environment Variable Setup</summary>
 	
-	Jenkins 파이프라인에서 사용할 환경 변수들을 설정
-	AWS_REGION: AWS 리전 설정 (ap-northeast-2)
-	ECR_REGISTRY: ECR 레지스트리 주소
-	FRONTEND_REPOSITORY: 프론트엔드 Docker 이미지 레포지토리
-	BACKEND_REPOSITORY: 백엔드 Docker 이미지 레포지토리
-	FRONTEND_IMAGE_TAG: 프론트엔드 이미지 태그
-	BACKEND_IMAGE_TAG: 백엔드 이미지 태그
- 	
+	Sets environment variables used throughout the Jenkins pipeline:
+	
+	- `AWS_REGION`: AWS region (e.g., ap-northeast-2)  
+	- `ECR_REGISTRY`: ECR registry address  
+	- `FRONTEND_REPOSITORY`: Frontend Docker image repository  
+	- `BACKEND_REPOSITORY`: Backend Docker image repository  
+	- `FRONTEND_IMAGE_TAG`: Frontend image tag  
+	- `BACKEND_IMAGE_TAG`: Backend image tag  
 </details>
 
 <details>
